@@ -36,9 +36,17 @@ export const inviteMemberMenuItem = {
 	icon: <UserPlus size={16} />,
 };
 
+/*
 export const manageLicenseMenuItem = {
 	key: ROUTES.LIST_LICENSES,
 	label: 'Manage Licenses',
+	icon: <FileKey2 size={16} />,
+};
+*/
+
+export const manageLicenseMenuItem = {
+	key: ROUTES.LIST_LICENSES,
+	label: 'Konneqt QAP Control Plane',
 	icon: <FileKey2 size={16} />,
 };
 

@@ -32,6 +32,7 @@ import { checkVersionState, isCloudUser, isEECloudUser } from 'utils/app';
 
 import { routeConfig } from './config';
 import { getQueryString } from './helper';
+/*
 import defaultMenuItems, {
 	helpSupportMenuItem,
 	inviteMemberMenuItem,
@@ -39,6 +40,15 @@ import defaultMenuItems, {
 	shortcutMenuItem,
 	slackSupportMenuItem,
 	trySignozCloudMenuItem,
+} from './menuItems';
+ */
+import defaultMenuItems, {
+	helpSupportMenuItem,
+	inviteMemberMenuItem,
+	manageLicenseMenuItem,
+	shortcutMenuItem,
+	//slackSupportMenuItem,
+	//trySignozCloudMenuItem,
 } from './menuItems';
 import NavItem from './NavItem/NavItem';
 import { SecondaryMenuItemKey, SidebarItem } from './sideNav.types';
@@ -60,7 +70,8 @@ function SideNav(): JSX.Element {
 
 	const { user, featureFlags, licenses } = useAppContext();
 
-	const [licenseTag, setLicenseTag] = useState('');
+	//const [licenseTag, setLicenseTag] = useState('');
+	const [licenseTag, setLicenseTag] = useState('SAAS');
 
 	const userSettingsMenuItem = {
 		key: ROUTES.MY_SETTINGS,
@@ -188,6 +199,7 @@ function SideNav(): JSX.Element {
 	};
 
 	useEffect(() => {
+		/*
 		if (isCloudUserVal) {
 			setLicenseTag('Cloud');
 		} else if (isEnterprise) {
@@ -195,6 +207,8 @@ function SideNav(): JSX.Element {
 		} else {
 			setLicenseTag('Free');
 		}
+		*/
+		setLicenseTag('SAAS');
 	}, [isCloudUserVal, isEnterprise]);
 
 	const [isCurrentOrgSettings] = useComponentPermission(
@@ -306,8 +320,8 @@ function SideNav(): JSX.Element {
 			};
 
 			updatedUserManagementItems = [
-				versionMenuItem,
-				slackSupportMenuItem,
+				//{versionMenuItem,}
+				//{slackSupportMenuItem,}
 				manageLicenseMenuItem,
 			];
 		}
@@ -338,9 +352,10 @@ function SideNav(): JSX.Element {
 								onClickHandler(ROUTES.APPLICATION, event);
 							}}
 						>
-							<img src="/Logos/signoz-brand-logo.svg" alt="SigNoz" />
+							{/*<img src="/Logos/signoz-brand-logo.svg" alt="SigNoz" />*/}
+							<img src="/Logos/qap-theme-brand-logo.png" alt="SigNoz" />
 
-							<span className="brand-logo-name nav-item-label"> SigNoz </span>
+							<span className="brand-logo-name nav-item-label"> QAP API Analytics </span>
 						</div>
 
 						{licenseTag && (
@@ -395,7 +410,7 @@ function SideNav(): JSX.Element {
 							isActive={false}
 							onClick={onClickShortcuts}
 						/>
-
+						{/*}
 						{licenses && !isLicenseActive && (
 							<NavItem
 								key="trySignozCloud"
@@ -405,7 +420,7 @@ function SideNav(): JSX.Element {
 								onClick={onClickSignozCloud}
 							/>
 						)}
-
+						*/}
 						{userManagementMenuItems.map(
 							(item, index): JSX.Element => (
 								<NavItem
